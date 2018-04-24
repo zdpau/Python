@@ -6,4 +6,4 @@
 ### 4 find() 检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1。 str.find(str, beg=0, end=len(string))
 ### 5 pop() 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。
 ### 6 Python Socket模块中的IP转换函数： ntohl()之类的 http://blog.csdn.net/fan_hai_ping/article/details/8435140
-### 7 
+### 7 这个网站是有关Ｕｂｕｎｔｕ上使用pyenv对Ｐｙｔｈｏｎ各版本进行整合：https://qiita.com/uryyyyyyy/items/268f8dc0d6ec3d7da7e3
