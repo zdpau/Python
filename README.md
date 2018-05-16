@@ -7,3 +7,4 @@
 ### 5 pop() 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。
 ### 6 Python Socket模块中的IP转换函数： ntohl()之类的 http://blog.csdn.net/fan_hai_ping/article/details/8435140
 ### 7 这个网站是有关Ｕｂｕｎｔｕ上使用pyenv对Ｐｙｔｈｏｎ各版本进行整合：https://qiita.com/uryyyyyyy/items/268f8dc0d6ec3d7da7e3
+### 8 https://www.cnblogs.com/chengd/articles/7287528.html (有关讲解Python类，讲得比较细)
