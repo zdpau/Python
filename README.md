@@ -12,3 +12,5 @@
 ### 10 https://www.cnblogs.com/ToDoToTry/p/5635863.html (有关format函数的讲解)
 ### 11 https://blog.csdn.net/itlance_ouyang/article/details/52489674 （Python命令行命令getopt,argparse）
 ### 12 https://blog.csdn.net/a1964543590/article/details/69791760 （这篇有关argparse讲得比较细）
+### 13 https://blog.csdn.net/ei1990/article/details/76423277 (flags的对比，argparse,tf两种)
+**总结起来的话，tf.app.flags.DEFINE_xxx()就是添加命令行的optional argument（可选参数），而tf.app.flags.FLAGS可以从对应的命令行参数取出参数。**
