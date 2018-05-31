@@ -9,3 +9,6 @@
 ### 7 这个网站是有关Ｕｂｕｎｔｕ上使用pyenv对Ｐｙｔｈｏｎ各版本进行整合：https://qiita.com/uryyyyyyy/items/268f8dc0d6ec3d7da7e3
 ### 8 https://www.cnblogs.com/chengd/articles/7287528.html (有关讲解Python类，讲得比较细)
 ### 9 https://blog.csdn.net/sun_wangdong/article/details/44428077 (有关讲解如何调用类中的构造函数，需要再看)
+### 10 https://www.cnblogs.com/ToDoToTry/p/5635863.html (有关format函数的讲解)
+### 11 https://blog.csdn.net/itlance_ouyang/article/details/52489674 （Python命令行命令getopt,argparse）
+### 12 https://blog.csdn.net/a1964543590/article/details/69791760 （这篇有关argparse讲得比较细）
