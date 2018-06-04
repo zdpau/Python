@@ -10,5 +10,4 @@
 ### 8 https://www.cnblogs.com/chengd/articles/7287528.html (有关讲解Python类，讲得比较细)
 ### 9 https://blog.csdn.net/sun_wangdong/article/details/44428077 (有关讲解如何调用类中的构造函数，需要再看)
 ### 10 https://www.cnblogs.com/ToDoToTry/p/5635863.html (有关format函数的讲解)
-### 11 https://blog.csdn.net/itlance_ouyang/article/details/52489674 （Python命令行命令getopt,argparse） https://blog.csdn.net/a1964543590/article/details/69791760 （这篇有关argparse讲得比较细）https://blog.csdn.net/ei1990/article/details/76423277 (flags的对比，argparse,tf两种) https://www.jianshu.com/p/a8f0b9c9dc58 （这篇很总结，并讲解了tf.app.run的原理）
-**总结起来的话，tf.app.flags.DEFINE_xxx()就是添加命令行的optional argument（可选参数），而tf.app.flags.FLAGS可以从对应的命令行参数取出参数。**
+### 11 
