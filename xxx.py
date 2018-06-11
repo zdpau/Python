@@ -21,14 +21,11 @@ def download_mnist_retry(seed=0, max_num_retries=20):
 class SimpleCNN(object):
     def __init__(self, learning_rate=1e-4):
         with tf.Graph().as_default():
-
-            # Create the model
+ 
             self.x = tf.placeholder(tf.float32, [None, 784])
 
-            # Define loss and optimizer
             self.y_ = tf.placeholder(tf.float32, [None, 10])
 
-            # Build the graph for the deep net
             self.y_conv, self.keep_prob = deepnn(self.x)
 
             with tf.name_scope('loss'):
