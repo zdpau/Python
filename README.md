@@ -8,9 +8,9 @@
 ### 6 Python Socket模块中的IP转换函数： ntohl()之类的 http://blog.csdn.net/fan_hai_ping/article/details/8435140
 ### 7 这个网站是有关Ｕｂｕｎｔｕ上使用pyenv对Ｐｙｔｈｏｎ各版本进行整合：https://qiita.com/uryyyyyyy/items/268f8dc0d6ec3d7da7e3
 ### 8 https://www.cnblogs.com/chengd/articles/7287528.html (有关讲解Python类，讲得比较细)
-类Class：鸟;类的方法（函数）：（鸟）会飞;类的属性（变量）：爪子，翅膀
+类Class：鸟; 类的方法（函数）：（鸟）会飞 ; 类的属性（变量）：爪子，翅膀
 
-实例：对象：麻雀，是（类Class）鸟 的一种;对象方法（函数）：麻雀会飞;对象的变量：麻雀有2个爪子，一对翅膀
+实例：对象：麻雀，是（类Class）鸟 的一种 ; 对象方法（函数）：麻雀会飞 ; 对象的变量：麻雀有2个爪子，一对翅膀
 ### 9 https://blog.csdn.net/sun_wangdong/article/details/44428077 (有关讲解如何调用类中的构造函数，需要再看)
 ### 10 https://www.cnblogs.com/ToDoToTry/p/5635863.html (有关format函数的讲解)
 ### 11 https://blog.csdn.net/yilovexing/article/details/80577510   *args 和 **kwargs的讲解
