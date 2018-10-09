@@ -24,5 +24,6 @@ async def main():
 asyncio.run(main())
 
 output:
-
+__main__:2: RuntimeWarning: coroutine 'nested' was never awaited
+43
 ```
