@@ -27,3 +27,59 @@ It’s simple. We need an event loop and we need to register our future/task obj
 Very often we choose to use coroutines for our work. We wrap a coroutine in Future and get a Task object. When a coroutine yields, it is paused. When it has a value, it is resumed. When it returns, the Task has completed and gets a value. Any associated callback is run. If the coroutine raises an exception, the Task fails and not resolved.
 
 我们经常选择使用coroutines来完成我们的工作。 我们在Future中包装一个coroutine并获取一个Task对象。 当coroutine yield时，它会暂停。当它有一个值时，它会恢复。 返回时，Task已完成并获取值。 运行任何关联的回调。 如果协同程序引发异常，则任务失败并且未解决。
+
+下面是一些例子：
+```
+import asyncio
+ 
+@asyncio.coroutine
+def slow_operation():
+    # yield from suspends execution until there's some result from asyncio.sleep
+    yield from asyncio.sleep(1)
+ 
+    # our task is done, here's the result
+    return 'Future is done!'
+ 
+ 
+def got_result(future):
+    print(future.result())
+ 
+ 
+# Our main event loop
+loop = asyncio.get_event_loop()
+ 
+# We create a task from a coroutine returned by slow_operation()  从slow_operation返回的协程创建一个任务
+task = loop.create_task(slow_operation())
+ 
+# Please notify us when the task is complete
+task.add_done_callback(got_result) # adds a callback to our task
+ 
+# The loop will close when the task has resolved
+loop.run_until_complete(task) # runs the event loop until the task is realized. As soon as it has value, the loop terminates.
+```
+The run_until_complete function is a nice way to manage the loop. Of course we could do this:
+```
+import asyncio
+ 
+ 
+async def slow_operation():
+    await asyncio.sleep(1)
+    return 'Future is done!'
+ 
+ 
+def got_result(future):
+    print(future.result())
+ 
+    # We have result, so let's stop
+    loop.stop()
+ 
+ 
+loop = asyncio.get_event_loop()
+task = loop.create_task(slow_operation())
+task.add_done_callback(got_result)
+ 
+# We run forever
+loop.run_forever()
+```
+Here we make the loop run forever and from our callback, we explicitly shut it down when the future has resolved.
+在这里，我们使循环永远运行，并且从我们的回调中，当future已经解决时，我们明确地将其关闭。
