@@ -1,5 +1,5 @@
 def triangles():
-    l = []
+    l = [1]
     while True:
         yield l
         l = [1] + [l[k] + l[k+1] for k in range(len(l)-1)] + [1]
