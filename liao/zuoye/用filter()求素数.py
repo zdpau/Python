@@ -1,3 +1,23 @@
+# 这个简单，但有一个问题就是2出不来
+import math
+import sys
+
+def prime(n):# n的取值2，3，4，5。。。。
+    if n <= 1:
+        return 0
+    for i in range(2,n):
+        if n % i == 0:#相当于3%2；4%2，4%3；5%2，5%3，5%4 。。。。。
+            return 0
+    return 1
+
+if __name__ == "__main__":
+    n = int(sys.argv[1])
+    for i in range(2,n+1):
+        if prime(i):
+            print i
+
+
+
 # 先构造一个从3开始的奇数序列，注意这是一个生成器，并且是一个无限序列。
 def _odd_iter():
     n = 1
