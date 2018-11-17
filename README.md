@@ -71,4 +71,61 @@ def set_score(self, score):
 
 ### 9 https://blog.csdn.net/sun_wangdong/article/details/44428077 (有关讲解如何调用类中的构造函数，需要再看)
 ### 10 https://www.cnblogs.com/ToDoToTry/p/5635863.html (有关format函数的讲解)
-### 11 https://blog.csdn.net/yilovexing/article/details/80577510   *args 和 **kwargs的讲解
+### 11 https://blog.csdn.net/yilovexing/article/details/80577510   （*args 和 **kwargs的讲解）
+### 12 http://lib.csdn.net/article/python/62942  (装饰器的讲解，从这个开始看)
+### 13 http://python.jobbole.com/81683/ （从函数开始讲起到装饰器，一步一步非常细，以后可以多看，对函数理解很有帮助，）
+
+1， 
+```
+def outer():
+     def inner():
+         print "Inside inner"
+     return inner # 1
+ 
+foo = outer() #2
+foo # doctest:+ELLIPSIS
+<function inner at 0x>
+foo()
+Inside inner
+```
+在#1处我把恰好是函数标识符的变量inner作为返回值返回出来。这并没有什么特殊的语法："把函数inner返回出来，否则它根本不可能会被调用到。"还记得变量的生存周期吗？每次函数outer被调用的时候，函数inner都会被重新定义，如果它不被当做变量返回的话，每次执行过后它将不复存在。
+
+在#2处我们捕获住返回值 – 函数inner，将它存在一个新的变量foo里。我们能够看到，当对变量foo进行求值，它确实包含函数inner，而且我们能够对他进行调用。
+
+2, Python支持一个叫做函数闭包的特性，用人话来讲就是，嵌套定义在非全局作用域里面的函数能够记住它在被定义的时候它所处的封闭命名空间。这能够通过查看函数的func_closure属性得出结论，这个属性里面包含封闭作用域里面的值。
+```
+def outer():
+     x = 1
+     def inner():
+         print x # 1
+     return inner
+foo = outer()
+foo.func_closure # doctest: +ELLIPSIS
+(<cell at 0x: int object at 0x>,)
+```
+所有的东西都在python的作用域规则下进行工作：“x是函数outer里的一个局部变量。当函数inner在#1处打印x的时候，python解释器会在inner内部查找相应的变量，当然会找不到，所以接着会到封闭作用域里面查找，并且会找到匹配。
+
+但是从变量的生存周期来看，该怎么理解呢？我们的变量x是函数outer的一个本地变量，这意味着只有当函数outer正在运行的时候才会存在。根据我们已知的python运行模式，我们没法在函数outer返回之后继续调用函数inner，在函数inner被调用的时候，变量x早已不复存在，可能会发生一个运行时错误。
+
+万万没想到，返回的函数inner居然能够正常工作。Python支持一个叫做**函数闭包**的特性，用人话来讲就是，嵌套定义在非全局作用域里面的函数能够记住它在被定义的时候它所处的封闭命名空间。这能够通过查看函数的func_closure属性得出结论，这个属性里面包含封闭作用域里面的值（只会包含被捕捉到的值，比如x，如果在outer里面还定义了其他的值，封闭作用域里面是不会有的)
+
+我的理解就是，inner里只调用了X的值，外部要是有别的值，就不会存在了。
+
+每次函数outer被调用的时候，函数inner都会被重新定义。现在变量x的值不会变化，所以每次返回的函数inner会是同样的逻辑，假如我们稍微改动一下呢？
+```
+def outer(x):
+     def inner():
+         print x # 1
+     return inner
+print1 = outer(1)
+print2 = outer(2)
+print1()
+1
+print2()
+2
+```
+从这个例子中你能够看到闭包 – 被函数记住的封闭作用域 – 能够被用来创建自定义的函数，本质上来说是一个硬编码的参数。事实上我们并不是传递参数1或者2给函数inner，我们实际上是创建了能够打印各种数字的各种自定义版本。
+
+**闭包单独拿出来就是一个非常强大的功能， 在某些方面，你也许会把它当做一个类似于面向对象的技术：outer像是给inner服务的构造器，x像一个私有变量。使用闭包的方式也有很多：你如果熟悉python内置排序方法的参数key，你说不定已经写过一个lambda方法在排序一个列表的列表的时候基于第二个元素而不是第一个。现在你说不定也可以写一个itemgetter方法，接收一个索引值来返回一个完美的函数，传递给排序函数的参数key。**
+
+不过，我们现在不会用闭包做这么low的事(⊙o⊙)…！相反，让我们再爽一次，写一个高大上的装饰器!
