@@ -1,3 +1,8 @@
+* async def 用来定义异步函数，其内部有异步操作。每个线程有一个事件循环，主线程调用asyncio.get_event_loop()时会创建事件循环，你需要把异步的任务丢给这个循环的run_until_complete()方法，事件循环会安排协同程序的执行。
+* await 关键字加在需要等待的操作前面。
+* 如果我们需要请求多个URL该怎么办呢，同步的做法访问多个URL只需要加个for循环就可以了。但异步的实现方式并没那么容易，在之前的基础上需要将hello()包装在asyncio的Future对象中，然后将Future对象列表作为任务传递给事件循环。
+
+
 1, class asyncio.AbstractEventLoop  事件循环的抽象基类。
 
 2, AbstractEventLoop.run_until_complete(future)
