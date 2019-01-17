@@ -53,3 +53,13 @@ IO编程中，Stream（流）是一个很重要的概念，可以把流想象成
 # 删掉一个目录:
 >>> os.rmdir('/Users/michael/testdir')
 ```
+
+要列出当前目录下的所有目录:
+```
+ [x for x in os.listdir('.') if os.path.isdir(x)]
+```
+
+要列出所有的.py文件，也只需:
+```
+[x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py']
+```
