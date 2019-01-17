@@ -16,3 +16,40 @@ IO编程中，Stream（流）是一个很重要的概念，可以把流想象成
 调用read()会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用read(size)方法，每次最多读取size个字节的内容。另外，调用readline()可以每次读取一行内容，调用readlines()一次读取所有内容并按行返回list。
 
 如果文件很小，read()一次性读取最方便；如果不能确定文件大小，反复调用read(size)比较保险；如果是配置文件，调用readlines()最方便：
+
+
+
+### 操作文件和目录
+```
+>>> import os
+
+>>> os.name # 操作系统类型
+'posix' # 如果是posix，说明系统是Linux、Unix或Mac OS X，如果是nt，就是Windows系统。
+
+>>> os.uname() # 要获取详细的系统信息
+
+>>> os.environ # 环境变量
+
+要获取某个环境变量的值，可以调用os.environ.get('key')
+>>> os.environ.get('PATH')
+'/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/mysql/bin'
+>>> os.environ.get('x', 'default')
+'default'
+
+
+查看、创建和删除目录可以这么调用：
+
+# 查看当前目录的绝对路径:
+>>> os.path.abspath('.')
+'/Users/michael'
+
+# 在某个目录下创建一个新目录，首先把新目录的完整路径表示出来:
+>>> os.path.join('/Users/michael', 'testdir')
+'/Users/michael/testdir'
+
+# 然后创建一个目录:
+>>> os.mkdir('/Users/michael/testdir')
+
+# 删掉一个目录:
+>>> os.rmdir('/Users/michael/testdir')
+```
