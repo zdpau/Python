@@ -1,6 +1,6 @@
 # Awaitables
 
-我们说如果一个对象可以在await表达式中使用，那么它就是一个awaitable对象。许多asyncio API旨在接受awaitable。
+**我们说如果一个对象可以在await表达式中使用，那么它就是一个awaitable对象。许多asyncio API旨在接受awaitable。**
 
 **There are three main types of awaitable objects: coroutines, Tasks, and Futures.**
 
